@@ -12,3 +12,20 @@ Read through the sql_joins_visual_guide.md file to build a strong mental and vis
 Review the sql_join_queries.sql file to see how those concepts are applied in practice.
 
 Try running these queries on your own SQL database after creating the sample tables defined at the top of the SQL file.
+
+Summary of the Correlated Subquery
+This SQL query is designed to identify and list all users who have made more than three bookings.
+
+How it Works:
+
+It uses a correlated subquery, which functions like a "row-by-row" check.
+
+The main (outer) query begins to go through the Users table, looking at one user at a time.
+
+For each user it considers, it runs the inner query (the subquery).
+
+This inner query is "correlated"—it specifically counts the number of bookings in the Bookings table that belong to the current user being examined by the outer query.
+
+The result of that count is then checked. If the count is greater than 3, the user's details (user_id and user_name) are included in the final output.
+
+The final list is sorted alphabetically by the user's name.
