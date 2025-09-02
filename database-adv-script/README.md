@@ -29,3 +29,28 @@ This inner query is "correlated"—it specifically counts the number of bookings
 The result of that count is then checked. If the count is greater than 3, the user's details (user_id and user_name) are included in the final output.
 
 The final list is sorted alphabetically by the user's name.
+
+Summary of SQL Aggregation & Window Function Queries
+This file contains two SQL queries that demonstrate how to analyze booking data using aggregation and window functions.
+
+Query 1: Find Total Bookings Per User
+Objective: To count the total number of bookings each user has made.
+
+Method: It uses the COUNT function with a GROUP BY clause.
+
+Analogy (The "Buckets"): Think of GROUP BY as creating a "bucket" for each user. The query goes through all the bookings and drops them into the correct user's bucket. Finally, COUNT simply counts how many bookings are in each bucket, giving a total for each user.
+
+Result: A list of users and their total booking count, sorted from most to least bookings.
+
+Query 2: Rank Properties by Popularity
+Objective: To rank properties based on how many bookings they have received.
+
+Method: It uses a Common Table Expression (CTE) to first calculate the booking count for each property. Then, it applies window functions (ROW_NUMBER and RANK) to that result.
+
+Analogy (The "Race"): Imagine each property is a runner in a race. The window function looks at all the runners together to assign a rank based on their performance (total bookings).
+
+ROW_NUMBER() assigns a unique rank (1, 2, 3, 4) with no ties.
+
+RANK() allows for ties (e.g., 1, 2, 2, 4).
+
+Result: A ranked list of properties, showing their booking count and their rank, making it easy to see which are the most popular.
